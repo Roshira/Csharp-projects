@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace CoinsApplication.ViewModels
 {
@@ -11,6 +12,7 @@ namespace CoinsApplication.ViewModels
     {
         private readonly CoinService _coinService;
         private ObservableCollection<CoinCurrency> _cryptos;
+        private DispatcherTimer _timer;
 
         public ObservableCollection<CoinCurrency> Cryptos
         {
@@ -26,13 +28,33 @@ namespace CoinsApplication.ViewModels
         {
             _coinService = coinService;
             Cryptos = new ObservableCollection<CoinCurrency>();
+
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(60); 
+            _timer.Tick += Timer_Tick;
+            _timer.Start();
+
             LoadDataAsync();
         }
 
-        private async void LoadDataAsync()
+        private async Task LoadDataAsync()
         {
-            var data = await _coinService.GetCryptosAsync(10);
-            Cryptos = new ObservableCollection<CoinCurrency>(data);
+            try
+            {
+                var data = await _coinService.GetCryptosAsync(10); 
+                Cryptos = new ObservableCollection<CoinCurrency>(data);
+            }
+            catch (Exception ex)
+            {
+                // Error logging (you can add a logger or show a message)
+                Console.WriteLine($"Error loading data: {ex.Message}");
+            }
+        }
+
+        private async void Timer_Tick(object sender, EventArgs e)
+        {
+            // Update data every 15 seconds
+            await LoadDataAsync();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

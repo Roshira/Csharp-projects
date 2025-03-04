@@ -1,6 +1,7 @@
 ﻿using CoinsApplication.ViewModels;
 using CoinsApplication.Services;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace CoinsApplication.Views
 {
@@ -11,5 +12,6 @@ namespace CoinsApplication.Views
             InitializeComponent();
             DataContext = new Top10CoinsViewModel(new CoinService());
         }
+      
     }
 }

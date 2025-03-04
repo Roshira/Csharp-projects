@@ -18,9 +18,9 @@ namespace CoinsApplication
             MainFrame.Navigate(new Top10Coins());
         }
 
-        private void BtnTop200_Click(object sender, RoutedEventArgs e)
+        private void AllCoins_(object sender, RoutedEventArgs e)
         {
-       
+            MainFrame.Navigate(new AllCoins());
         }
     }
 }
