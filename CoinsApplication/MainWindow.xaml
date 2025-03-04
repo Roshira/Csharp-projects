@@ -1,0 +1,17 @@
+﻿<Window x:Class="CoinsApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CryptoApp" Height="500" Width="800">
+
+    <Grid>
+        <DockPanel>
+
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Name="BtnTop10" Content="Top 10 Cryptos" Click="BtnTop10_Click" Width="150" Margin="5"/>
+                <Button Name="BtnTop200" Content="Top 200 Cryptos" Click="BtnTop200_Click" Width="150" Margin="5"/>
+            </StackPanel>
+            
+            <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        </DockPanel>
+    </Grid>
+</Window>
