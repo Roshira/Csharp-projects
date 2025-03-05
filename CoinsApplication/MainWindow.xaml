@@ -6,7 +6,6 @@
     <Grid>
         <DockPanel Background="{DynamicResource BackgroundMain}">
 
-            <!-- Верхня панель -->
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10" Width="739">
                 <ToggleButton Name="BtnSwitchTheme"
                               Content="🌙"

@@ -2,6 +2,7 @@
 using CoinsApplication.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -14,6 +15,7 @@ namespace CoinsApplication.ViewModels
         private readonly CoinService _coinService;
         private ObservableCollection<CoinCurrency> _allCryptos;
         private ObservableCollection<CoinCurrency> _pagedCryptos;
+        private string _searchQuery;
         private int _currentPage;
         private const int PageSize = 15;
         private DispatcherTimer _timer;
@@ -28,10 +30,22 @@ namespace CoinsApplication.ViewModels
             }
         }
 
-        public string CurrentPageText => $" {_currentPage + 1} / {(_allCryptos.Count + PageSize - 1) / PageSize}";
+        public string SearchQuery
+        {
+            get => _searchQuery;
+            set
+            {
+                _searchQuery = value;
+                OnPropertyChanged();
+                FilterCoins();
+            }
+        }
+
+        public string CurrentPageText => $"{_currentPage + 1} / {(_allCryptos.Count + PageSize - 1) / PageSize}";
 
         public ICommand NextPageCommand { get; }
         public ICommand PreviousPageCommand { get; }
+        public ICommand SearchCommand { get; }
 
         public AllCoinsViewModel(CoinService coinService)
         {
@@ -42,9 +56,12 @@ namespace CoinsApplication.ViewModels
 
             NextPageCommand = new RelayCommandService(NextPage, CanGoNext);
             PreviousPageCommand = new RelayCommandService(PreviousPage, CanGoPrevious);
+            SearchCommand = new RelayCommandService(FilterCoins);
 
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromMinutes(1);
+            _timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMinutes(1)
+            };
             _timer.Tick += async (s, e) => await LoadDataAsync();
             _timer.Start();
 
@@ -57,7 +74,7 @@ namespace CoinsApplication.ViewModels
             {
                 var data = await _coinService.GetCryptosAsync(500);
                 _allCryptos = new ObservableCollection<CoinCurrency>(data);
-                UpdatePagedCryptos();
+                FilterCoins();
             }
             catch (Exception ex)
             {
@@ -65,9 +82,22 @@ namespace CoinsApplication.ViewModels
             }
         }
 
-        private void UpdatePagedCryptos()
+        public void FilterCoins()
         {
-            PagedCryptos = new ObservableCollection<CoinCurrency>(_allCryptos.Skip(_currentPage * PageSize).Take(PageSize));
+            var filtered = string.IsNullOrWhiteSpace(SearchQuery)
+                ? _allCryptos
+                : new ObservableCollection<CoinCurrency>(_allCryptos
+                    .Where(c => c.Name.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase) ||
+                                c.Symbol.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase)));
+
+            _currentPage = 0;
+            UpdatePagedCryptos(filtered);
+        }
+
+        private void UpdatePagedCryptos(ObservableCollection<CoinCurrency> source = null)
+        {
+            var list = source ?? _allCryptos;
+            PagedCryptos = new ObservableCollection<CoinCurrency>(list.Skip(_currentPage * PageSize).Take(PageSize));
             OnPropertyChanged(nameof(CurrentPageText));
         }
 

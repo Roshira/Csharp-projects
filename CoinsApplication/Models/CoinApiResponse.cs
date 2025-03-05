@@ -10,4 +10,5 @@ namespace CoinsApplication.Models
     {
         public List<CoinCurrency> Data { get; set; }
     }
+
 }

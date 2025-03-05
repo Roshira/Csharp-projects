@@ -10,7 +10,15 @@ namespace CoinsApplication
     /// </summary>
     public partial class App : Application
     {
-       
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
+
+        }
     }
 
 }

@@ -144,6 +144,12 @@
   <data name="PriceColumn" xml:space="preserve">
     <value>Ціна (USD)</value>
   </data>
+  <data name="SearchButtonText" xml:space="preserve">
+    <value>Пошук</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Введіть назву монети...</value>
+  </data>
   <data name="SymbolColumn" xml:space="preserve">
     <value>Символ</value>
   </data>

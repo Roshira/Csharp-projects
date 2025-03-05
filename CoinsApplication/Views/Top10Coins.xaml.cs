@@ -2,6 +2,7 @@
 using CoinsApplication.Services;
 using System.Windows.Controls;
 using System.Windows;
+using CoinsApplication.Models;
 
 namespace CoinsApplication.Views
 {
@@ -24,6 +25,15 @@ namespace CoinsApplication.Views
             Change1hColumn.Header = Properties.Resources.Сhange1hColumn;
             Change24hColumn.Header = Properties.Resources.Change24hColumn;
             Change7dColumn.Header = Properties.Resources.Change7dColumn;
+        }
+        private void CryptosListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedCoin = CryptosListView.SelectedItem as CoinCurrency;
+            if (selectedCoin != null)
+            {
+                var coinDetailsPage = new CoinDetailsPage(selectedCoin);
+                NavigationService.Navigate(coinDetailsPage);
+            }
         }
     }
 }

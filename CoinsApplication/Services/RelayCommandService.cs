@@ -1,9 +1,13 @@
-﻿using System;
+﻿using CoinsApplication.Models;
+using CoinsApplication.ViewModels;
+using CoinsApplication.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace CoinsApplication.Services
 {

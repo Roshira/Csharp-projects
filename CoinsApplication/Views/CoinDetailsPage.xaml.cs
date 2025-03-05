@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoinsApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,15 @@ using System.Windows.Shapes;
 namespace CoinsApplication.Views
 {
     /// <summary>
-    /// Interaction logic for CoinDetails.xaml
+    /// Interaction logic for CoinDetailsPage.xaml
     /// </summary>
-    public partial class CoinDetails : Page
+    public partial class CoinDetailsPage : Page
     {
-        public CoinDetails()
+        public CoinDetailsPage(CoinCurrency selectedCoin)
         {
             InitializeComponent();
+            DataContext = selectedCoin; // Встановлюємо контекст даних для сторінки
         }
+       
     }
 }

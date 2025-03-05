@@ -23,48 +23,46 @@
 
         <!-- Список криптовалют -->
         <ListView x:Name="CryptosListView" ItemsSource="{Binding Cryptos}" Margin="10"
-                  Grid.Row="1"
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Stretch"
-                  BorderBrush="{DynamicResource BorderBrush}"
-                  BorderThickness="1"
-                  Background="{DynamicResource BackgroundBrush}">
+          Grid.Row="1"
+          HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch"
+          BorderBrush="{DynamicResource BorderBrush}"
+          BorderThickness="1"
+          Background="{DynamicResource BackgroundBrush}"
+          SelectionChanged="CryptosListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="NameColumn" DisplayMemberBinding="{Binding Name}" Width="200"/>
                     <GridViewColumn x:Name="SymbolColumn" DisplayMemberBinding="{Binding Symbol}" Width="80"/>
                     <GridViewColumn x:Name="PriceColumn" DisplayMemberBinding="{Binding Quote.USD.Price}" Width="120"/>
                     <GridViewColumn x:Name="MarketCapColumn" DisplayMemberBinding="{Binding Quote.USD.MarketCap}" Width="150"/>
-
                     <GridViewColumn x:Name="Change1hColumn">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Quote.USD.PercentChange1h, StringFormat=F2}"
-                                           Foreground="{Binding Quote.USD.PercentChange1h, Converter={StaticResource ColorConverterService}}"
-                                           FontWeight="Bold"
-                                           HorizontalAlignment="Center"/>
+                                   Foreground="{Binding Quote.USD.PercentChange1h, Converter={StaticResource ColorConverterService}}"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-
                     <GridViewColumn x:Name="Change24hColumn">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Quote.USD.PercentChange24h, StringFormat=F2}"
-                                           Foreground="{Binding Quote.USD.PercentChange24h, Converter={StaticResource ColorConverterService}}"
-                                           FontWeight="Bold"
-                                           HorizontalAlignment="Center"/>
+                                   Foreground="{Binding Quote.USD.PercentChange24h, Converter={StaticResource ColorConverterService}}"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-
                     <GridViewColumn x:Name="Change7dColumn">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Quote.USD.PercentChange7d, StringFormat=F2}"
-                                           Foreground="{Binding Quote.USD.PercentChange7d, Converter={StaticResource ColorConverterService}}"
-                                           FontWeight="Bold"
-                                           HorizontalAlignment="Center"/>
+                                   Foreground="{Binding Quote.USD.PercentChange7d, Converter={StaticResource ColorConverterService}}"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

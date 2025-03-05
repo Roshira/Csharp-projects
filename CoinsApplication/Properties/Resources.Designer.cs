@@ -142,6 +142,24 @@ namespace CoinsApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string SearchButtonText {
+            get {
+                return ResourceManager.GetString("SearchButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter coin name....
+        /// </summary>
+        internal static string SearchPlaceholder {
+            get {
+                return ResourceManager.GetString("SearchPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Symbol.
         /// </summary>
         internal static string SymbolColumn {

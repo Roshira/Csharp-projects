@@ -46,7 +46,35 @@ namespace CoinsApplication.Services
                 return new List<CoinCurrency>();
             }
         }
+        public async Task<CoinCurrency> GetCryptoByIdAsync(int coinId)
+        {
+            try
+            {
+                var url = $"{BaseUrl}?id={coinId}&convert=USD";
+                var response = await _httpClient.GetAsync(url);
 
-      
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Request error: {response.StatusCode}");
+                }
+
+                var json = await response.Content.ReadAsStringAsync();
+                var cryptoData = JsonSerializer.Deserialize<CoinApiResponse>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                return cryptoData?.Data?.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving data: {ex.Message}");
+                return null;
+            }
+        }
+
+
+
+
     }
 }

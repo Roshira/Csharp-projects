@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace CoinsApplication.ViewModels
@@ -53,7 +54,7 @@ namespace CoinsApplication.ViewModels
 
         private async void Timer_Tick(object sender, EventArgs e)
         {
-            // Update data every 15 seconds
+            // Update data every 60 seconds
             await LoadDataAsync();
         }
 
@@ -62,5 +63,6 @@ namespace CoinsApplication.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+       
     }
 }

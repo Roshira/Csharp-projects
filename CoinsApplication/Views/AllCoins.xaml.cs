@@ -1,4 +1,5 @@
-﻿using CoinsApplication.Services;
+﻿using CoinsApplication.Models;
+using CoinsApplication.Services;
 using CoinsApplication.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,24 @@ namespace CoinsApplication.Views
             AllCoinsChange7dColumn.Header = Properties.Resources.Change7dColumn;
             PreviousButton.Content = Properties.Resources.PreviousButton;
             NextButton.Content = Properties.Resources.NextButton;
+            SearchText.Text = Properties.Resources.SearchButtonText;
+        }
+        private void CryptosListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedCoin = AllCoinsListView.SelectedItem as CoinCurrency;
+            if (selectedCoin != null)
+            {
+                var coinDetailsPage = new CoinDetailsPage(selectedCoin);
+                NavigationService.Navigate(coinDetailsPage);
+            }
+        }
+        private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                var viewModel = DataContext as AllCoinsViewModel;
+                viewModel?.FilterCoins();
+            }
         }
     }
 }

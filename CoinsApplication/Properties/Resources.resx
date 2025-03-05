@@ -144,6 +144,12 @@
   <data name="PriceColumn" xml:space="preserve">
     <value>Price (USD)</value>
   </data>
+  <data name="SearchButtonText" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Enter coin name...</value>
+  </data>
   <data name="SymbolColumn" xml:space="preserve">
     <value>Symbol</value>
   </data>
