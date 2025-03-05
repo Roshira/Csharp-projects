@@ -24,7 +24,7 @@ namespace CoinsApplication.Views
         public CoinDetailsPage(CoinCurrency selectedCoin)
         {
             InitializeComponent();
-            DataContext = selectedCoin; // Встановлюємо контекст даних для сторінки
+            DataContext = selectedCoin;
         }
        
     }

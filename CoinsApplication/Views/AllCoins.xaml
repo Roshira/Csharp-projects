@@ -44,7 +44,6 @@
             </ListView.View>
         </ListView>
 
-        <!-- Контейнер для кнопок внизу екрана -->
         <Grid VerticalAlignment="Bottom" Margin="10">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="PreviousButton" Command="{Binding PreviousPageCommand}" Width="100" Height="30" Margin="5"/>

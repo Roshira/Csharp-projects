@@ -1,0 +1,5 @@
+Link to video demonstration:https://youtu.be/SHKZ1rpXXi0
+
+In this project, a desktop application was created on WPF .net. Reading data about coins with an update in one minute from the CoinMarketCup API was implemented. There is a main page with 10 coins and a second one with all of them, you can go to the page with all coins and find the one you need through the search line. Also, by clicking go to detailed information about the coin. You can choose light and dark themes as well as Ukrainian and English languages.
+
+(I didn't have much time to do everything well, I also did a test before this, thanks for your attention)
