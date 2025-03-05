@@ -8,7 +8,7 @@
         <local:ColorConverterService x:Key="ColorConverterService"/>
     </Page.Resources>
     <Grid>
-        <!-- Список монет -->
+
         <ListView ItemsSource="{Binding PagedCryptos}" Margin="10" Height="Auto">
             <ListView.View>
                 <GridView>
