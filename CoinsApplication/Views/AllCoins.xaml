@@ -9,37 +9,37 @@
     </Page.Resources>
     <Grid>
 
-        <ListView ItemsSource="{Binding PagedCryptos}" Margin="10" Height="Auto">
+        <ListView x:Name="AllCoinsListView" ItemsSource="{Binding PagedCryptos}" Margin="10" Height="Auto">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="150"/>
-                    <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}" Width="80"/>
-                    <GridViewColumn Header="Price (USD)" DisplayMemberBinding="{Binding Quote.USD.Price}" Width="100"/>
-                    <GridViewColumn Header="Market Cap" DisplayMemberBinding="{Binding Quote.USD.MarketCap}" Width="150"/>
+                    <GridViewColumn x:Name="AllCoinsNameColumn" DisplayMemberBinding="{Binding Name}" Width="150"/>
+                    <GridViewColumn x:Name="AllCoinsSymbolColumn" DisplayMemberBinding="{Binding Symbol}" Width="80"/>
+                    <GridViewColumn x:Name="AllCoinsPriceColumn" DisplayMemberBinding="{Binding Quote.USD.Price}" Width="100"/>
+                    <GridViewColumn x:Name="AllCoinsMarketCapColumn" DisplayMemberBinding="{Binding Quote.USD.MarketCap}" Width="150"/>
 
-                    <GridViewColumn Header="Change 1h">
+                    <GridViewColumn x:Name="AllCoinsChange1hColumn">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Quote.USD.PercentChange1h, StringFormat=F2}"
-                                       Foreground="{Binding Quote.USD.PercentChange1h, Converter={StaticResource ColorConverterService}}"/>
+                                           Foreground="{Binding Quote.USD.PercentChange1h, Converter={StaticResource ColorConverterService}}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Change 24h">
+                    <GridViewColumn x:Name="AllCoinsChange24hColumn">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Quote.USD.PercentChange24h, StringFormat=F2}"
-                                       Foreground="{Binding Quote.USD.PercentChange24h, Converter={StaticResource ColorConverterService}}"/>
+                                           Foreground="{Binding Quote.USD.PercentChange24h, Converter={StaticResource ColorConverterService}}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Change 7d">
+                    <GridViewColumn x:Name="AllCoinsChange7dColumn">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Quote.USD.PercentChange7d, StringFormat=F2}"
-                                       Foreground="{Binding Quote.USD.PercentChange7d, Converter={StaticResource ColorConverterService}}"/>
+                                           Foreground="{Binding Quote.USD.PercentChange7d, Converter={StaticResource ColorConverterService}}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -50,11 +50,10 @@
         <!-- Контейнер для кнопок внизу екрана -->
         <Grid VerticalAlignment="Bottom" Margin="10">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Previous" Command="{Binding PreviousPageCommand}" Width="100" Height="30" Margin="5"/>
+                <Button x:Name="PreviousButton" Command="{Binding PreviousPageCommand}" Width="100" Height="30" Margin="5"/>
                 <TextBlock Text="{Binding CurrentPageText}" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Margin="10"/>
-                <Button Content="Next" Command="{Binding NextPageCommand}" Width="100" Height="30" Margin="5" IsEnabled="True"/>
+                <Button x:Name="NextButton" Command="{Binding NextPageCommand}" Width="100" Height="30" Margin="5" IsEnabled="True"/>
             </StackPanel>
         </Grid>
     </Grid>
-
 </Page>

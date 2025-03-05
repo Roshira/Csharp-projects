@@ -25,7 +25,21 @@ namespace CoinsApplication.Views
         public AllCoins()
         {
             InitializeComponent();
+            UpdateLocalization();
             DataContext = new AllCoinsViewModel(new CoinService());
+        }
+
+        public void UpdateLocalization()
+        {
+            AllCoinsNameColumn.Header = Properties.Resources.NameColumn;
+            AllCoinsSymbolColumn.Header = Properties.Resources.SymbolColumn;
+            AllCoinsPriceColumn.Header = Properties.Resources.PriceColumn;
+            AllCoinsMarketCapColumn.Header = Properties.Resources.MarketCapColumn;
+            AllCoinsChange1hColumn.Header = Properties.Resources.Сhange1hColumn;
+            AllCoinsChange24hColumn.Header = Properties.Resources.Change24hColumn;
+            AllCoinsChange7dColumn.Header = Properties.Resources.Change7dColumn;
+            PreviousButton.Content = Properties.Resources.PreviousButton;
+            NextButton.Content = Properties.Resources.NextButton;
         }
     }
 }

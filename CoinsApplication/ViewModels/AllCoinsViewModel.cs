@@ -28,7 +28,7 @@ namespace CoinsApplication.ViewModels
             }
         }
 
-        public string CurrentPageText => $"Page {_currentPage + 1} of {(_allCryptos.Count + PageSize - 1) / PageSize}";
+        public string CurrentPageText => $" {_currentPage + 1} / {(_allCryptos.Count + PageSize - 1) / PageSize}";
 
         public ICommand NextPageCommand { get; }
         public ICommand PreviousPageCommand { get; }

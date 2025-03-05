@@ -7,22 +7,6 @@
 
     <Page.Resources>
         <local:ColorConverterService x:Key="ColorConverterService"/>
-
-        <!-- Стиль для ListView -->
-        <Style TargetType="ListViewItem">
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="Margin" Value="2"/>
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Page.Resources>
 
     <Grid>
@@ -31,14 +15,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Top 10 Cryptocurrencies"
+        <TextBlock x:Name="Top10Title"
                    FontSize="28" FontWeight="Bold"
                    Foreground="{DynamicResource ForegroundBrush}"
                    HorizontalAlignment="Center"
                    Margin="10"/>
 
         <!-- Список криптовалют -->
-        <ListView ItemsSource="{Binding Cryptos}" Margin="10"
+        <ListView x:Name="CryptosListView" ItemsSource="{Binding Cryptos}" Margin="10"
                   Grid.Row="1"
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Stretch"
@@ -47,12 +31,12 @@
                   Background="{DynamicResource BackgroundBrush}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
-                    <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}" Width="80"/>
-                    <GridViewColumn Header="Price (USD)" DisplayMemberBinding="{Binding Quote.USD.Price}" Width="120"/>
-                    <GridViewColumn Header="Market Cap" DisplayMemberBinding="{Binding Quote.USD.MarketCap}" Width="150"/>
+                    <GridViewColumn x:Name="NameColumn" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                    <GridViewColumn x:Name="SymbolColumn" DisplayMemberBinding="{Binding Symbol}" Width="80"/>
+                    <GridViewColumn x:Name="PriceColumn" DisplayMemberBinding="{Binding Quote.USD.Price}" Width="120"/>
+                    <GridViewColumn x:Name="MarketCapColumn" DisplayMemberBinding="{Binding Quote.USD.MarketCap}" Width="150"/>
 
-                    <GridViewColumn Header="Change 1h">
+                    <GridViewColumn x:Name="Change1hColumn">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Quote.USD.PercentChange1h, StringFormat=F2}"
@@ -63,7 +47,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Change 24h">
+                    <GridViewColumn x:Name="Change24hColumn">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Quote.USD.PercentChange24h, StringFormat=F2}"
@@ -74,7 +58,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Change 7d">
+                    <GridViewColumn x:Name="Change7dColumn">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Quote.USD.PercentChange7d, StringFormat=F2}"

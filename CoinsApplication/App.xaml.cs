@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Windows;
 
 namespace CoinsApplication
@@ -9,7 +10,7 @@ namespace CoinsApplication
     /// </summary>
     public partial class App : Application
     {
-
+       
     }
 
 }

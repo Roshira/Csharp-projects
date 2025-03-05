@@ -10,8 +10,20 @@ namespace CoinsApplication.Views
         public Top10Coins()
         {
             InitializeComponent();
+            UpdateLocalization();
             DataContext = new Top10CoinsViewModel(new CoinService());
         }
-      
+
+        public void UpdateLocalization()
+        {
+            Top10Title.Text = Properties.Resources.Top10Cryptocurrencies;
+            NameColumn.Header = Properties.Resources.NameColumn;
+            SymbolColumn.Header = Properties.Resources.SymbolColumn;
+            PriceColumn.Header = Properties.Resources.PriceColumn;
+            MarketCapColumn.Header = Properties.Resources.MarketCapColumn;
+            Change1hColumn.Header = Properties.Resources.Сhange1hColumn;
+            Change24hColumn.Header = Properties.Resources.Change24hColumn;
+            Change7dColumn.Header = Properties.Resources.Change7dColumn;
+        }
     }
 }
