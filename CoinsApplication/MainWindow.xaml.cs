@@ -9,8 +9,8 @@ namespace CoinsApplication
 {
     public partial class MainWindow : Window
     {
-        private bool isDarkTheme = false;
-        private bool isEnglish = true;
+        private bool _isDarkTheme = false;
+        private bool _isEnglish = true;
 
         public MainWindow()
         {
@@ -19,12 +19,12 @@ namespace CoinsApplication
             UpdateLocalization();
         }
 
-        private void BtnTop10_Click(object sender, RoutedEventArgs e)
+        private void BtnTop10Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new Top10Coins());
         }
 
-        private void AllCoins_(object sender, RoutedEventArgs e)
+        private void AllCoins1(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new AllCoins());
         }
@@ -36,15 +36,15 @@ namespace CoinsApplication
             Application.Current.Resources.MergedDictionaries.Add(newTheme);
         }
 
-        private void BtnSwitchTheme_Click(object sender, RoutedEventArgs e)
+        private void BtnSwitchThemeClick(object sender, RoutedEventArgs e)
         {
-            isDarkTheme = !isDarkTheme;
-            LoadTheme(isDarkTheme ? "Themes/DarkTheme.xaml" : "Themes/LightTheme.xaml");
+            _isDarkTheme = !_isDarkTheme;
+            LoadTheme(_isDarkTheme ? "Themes/DarkTheme.xaml" : "Themes/LightTheme.xaml");
         }
 
         private void UpdateLocalization()
         {
-            var culture = new CultureInfo(isEnglish ? "en-US" : "uk-UA");
+            var culture = new CultureInfo(_isEnglish ? "en-US" : "uk-UA");
             Thread.CurrentThread.CurrentUICulture = culture;
             Thread.CurrentThread.CurrentCulture = culture;
 
@@ -62,9 +62,9 @@ namespace CoinsApplication
                 allCoinsPage.UpdateLocalization();
             }
         }
-        private void SwitchLanguage_Click(object sender, RoutedEventArgs e)
+        private void SwitchLanguageClick(object sender, RoutedEventArgs e)
         {
-            isEnglish = !isEnglish;
+            _isEnglish = !_isEnglish;
             UpdateLocalization();
         }
     }

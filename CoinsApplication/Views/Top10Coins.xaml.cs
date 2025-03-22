@@ -26,7 +26,7 @@ namespace CoinsApplication.Views
             Change24hColumn.Header = Properties.Resources.Change24hColumn;
             Change7dColumn.Header = Properties.Resources.Change7dColumn;
         }
-        private void CryptosListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CryptosListViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedCoin = CryptosListView.SelectedItem as CoinCurrency;
             if (selectedCoin != null)

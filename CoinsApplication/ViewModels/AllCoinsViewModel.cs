@@ -35,11 +35,14 @@ namespace CoinsApplication.ViewModels
             get => _searchQuery;
             set
             {
-                _searchQuery = value;
-                OnPropertyChanged();
-                FilterCoins();
+                {
+                    _searchQuery = value;
+                    OnPropertyChanged();
+                    FilterCoins();
+                }
             }
         }
+        
 
         public string CurrentPageText => $"{_currentPage + 1} / {(_allCryptos.Count + PageSize - 1) / PageSize}";
 

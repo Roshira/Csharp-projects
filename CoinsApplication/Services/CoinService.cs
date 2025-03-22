@@ -10,21 +10,21 @@ namespace CoinsApplication.Services
     public class CoinService
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+        private const string _BaseUrl = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
 
         public CoinService()
         {
             var config = ConfigService.LoadConfiguration();
-            var ApiKey = config["ApiSettings:ApiKey"]; // Отримуємо ключ
+            var apiKey = config["ApiSettings:ApiKey"]; // Отримуємо ключ
             _httpClient = new HttpClient();
-            _httpClient.DefaultRequestHeaders.Add("X-CMC_PRO_API_KEY", ApiKey);
+            _httpClient.DefaultRequestHeaders.Add("X-CMC_PRO_API_KEY", apiKey);
         }
 
         public async Task<List<CoinCurrency>> GetCryptosAsync(int limit)
         {
             try
             {
-                var url = $"{BaseUrl}?limit={limit}&convert=USD";
+                var url = $"{_BaseUrl}?limit={limit}&convert=USD";
                 var response = await _httpClient.GetAsync(url);
 
                 if (!response.IsSuccessStatusCode)
@@ -50,7 +50,7 @@ namespace CoinsApplication.Services
         {
             try
             {
-                var url = $"{BaseUrl}?id={coinId}&convert=USD";
+                var url = $"{_BaseUrl}?id={coinId}&convert=USD";
                 var response = await _httpClient.GetAsync(url);
 
                 if (!response.IsSuccessStatusCode)

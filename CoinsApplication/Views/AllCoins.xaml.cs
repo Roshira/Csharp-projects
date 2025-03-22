@@ -43,7 +43,7 @@ namespace CoinsApplication.Views
             NextButton.Content = Properties.Resources.NextButton;
             SearchText.Text = Properties.Resources.SearchButtonText;
         }
-        private void CryptosListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CryptosListViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedCoin = AllCoinsListView.SelectedItem as CoinCurrency;
             if (selectedCoin != null)
@@ -52,7 +52,7 @@ namespace CoinsApplication.Views
                 NavigationService.Navigate(coinDetailsPage);
             }
         }
-        private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void SearchTextBoxKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {

@@ -10,7 +10,7 @@
                 <ToggleButton Name="BtnSwitchTheme"
                               Content="🌙"
                               ToolTip="Switch Theme"
-                              Click="BtnSwitchTheme_Click"
+                              Click="BtnSwitchThemeClick"
                               Width="40" Height="30"
                               HorizontalAlignment="Right"
                               VerticalAlignment="Top"
@@ -21,11 +21,11 @@
                               FontSize="16"
                               FontWeight="Bold" RenderTransformOrigin="0.462,-0.797"/>
                 <StackPanel Orientation="Horizontal" Width="334" Margin="150,0,0,0">
-                    <Button Name="BtnTop10" Click="BtnTop10_Click" Width="150" Margin="5"/>
-                    <Button Name="AllCoins" Click="AllCoins_" Width="150" Margin="5" RenderTransformOrigin="0.497,0.551"/>
+                    <Button Name="BtnTop10" Click="BtnTop10Click" Width="150" Margin="5"/>
+                    <Button Name="AllCoins" Click="AllCoins1" Width="150" Margin="5" RenderTransformOrigin="0.497,0.551"/>
            
                 </StackPanel>
-                <Button Name="BtnSwitchLanguage" Click="SwitchLanguage_Click" Content="Switch Language" Width="150" Margin="5"/>
+                <Button Name="BtnSwitchLanguage" Click="SwitchLanguageClick" Content="Switch Language" Width="150" Margin="5"/>
             </StackPanel>
 
             <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>

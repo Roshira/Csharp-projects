@@ -29,7 +29,7 @@
           BorderBrush="{DynamicResource BorderBrush}"
           BorderThickness="1"
           Background="{DynamicResource BackgroundBrush}"
-          SelectionChanged="CryptosListView_SelectionChanged">
+          SelectionChanged="CryptosListViewSelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="NameColumn" DisplayMemberBinding="{Binding Name}" Width="200"/>

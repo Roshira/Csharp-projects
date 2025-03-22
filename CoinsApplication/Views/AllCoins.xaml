@@ -9,7 +9,7 @@
     </Page.Resources>
     <Grid>
         <ListView x:Name="AllCoinsListView" ItemsSource="{Binding PagedCryptos}" Margin="10" Height="Auto"
-          SelectionChanged="CryptosListView_SelectionChanged">
+          SelectionChanged="CryptosListViewSelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="AllCoinsNameColumn" DisplayMemberBinding="{Binding Name}" Width="150"/>
@@ -51,7 +51,7 @@
                 <Button x:Name="NextButton" Command="{Binding NextPageCommand}" Width="100" Height="30" Margin="5"/>
 
                 <Grid Width="200" Height="30" Margin="10,0,0,0">
-                    <TextBox Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" Padding="5" KeyDown="SearchTextBox_KeyDown"/>
+                    <TextBox Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" Padding="5" KeyDown="SearchTextBoxKeyDown"/>
                 </Grid>
                 <TextBlock x:Name="SearchText"
            FontSize="15" FontWeight="Bold"
