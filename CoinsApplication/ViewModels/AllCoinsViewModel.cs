@@ -20,6 +20,8 @@ namespace CoinsApplication.ViewModels
         private const int PageSize = 15;
         private DispatcherTimer _timer;
 
+
+
         public ObservableCollection<CoinCurrency> PagedCryptos
         {
             get => _pagedCryptos;
@@ -130,5 +132,6 @@ namespace CoinsApplication.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        
     }
 }
